@@ -33,5 +33,9 @@ let add_item t ~item =
   t.items <- item::t.items;
   t
 
-let delete_item t item =
-  t.items <- List.filter t.items ~f:((<>) item)
+let delete_item t ~item =
+  t.items <- List.filter t.items ~f:((<>) item);
+  t
+
+let find_item t ~title =
+  List.find t.items ~f:(fun item -> (Item.title item) = title)

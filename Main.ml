@@ -26,6 +26,20 @@ let add_item =
        |> Todo.save
     )
 
+let delete_item =
+  Command.basic
+    ~summary:("Delete an element from the list")
+    Command.Spec.(
+      empty
+      +> anon ("title" %: string)
+    )
+    (fun title () ->
+       let t = Todo.init () in
+       match Todo.find_item t ~title with
+       | Some item -> Todo.delete_item t ~item |> Todo.save
+       | None -> printf "No item has title '%s'\n" title
+    )
+
 let command =
   Command.group
     ~summary:("A simple todo-list manager written in OCaml.")
@@ -33,7 +47,8 @@ let command =
       TodoList is a software that lets you manage a simple task list : add, list and delete items.\
     ")
     ["list", list_items;
-     "add", add_item]
+     "add", add_item;
+     "delete", delete_item]
 
 let () =
   Command.run command ~version:"0.1" ~build_info:"ocamlbuild 4.04.0"

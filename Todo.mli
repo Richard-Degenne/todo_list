@@ -10,4 +10,6 @@ val list_items : t -> Item.t list
 
 val add_item : t -> item:Item.t -> t
 
-val delete_item : t -> Item.t -> unit
+val delete_item : t -> item:Item.t -> t
+
+val find_item : t -> title:string -> Item.t option
