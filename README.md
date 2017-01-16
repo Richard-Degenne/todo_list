@@ -8,6 +8,27 @@ About
 
 TodoList is a software that lets you manage a simple task list : add, list and delete items.
 
+Installation
+------------
+
+### Installing Core
+
+For the time being, you need to compile `todo_list` by yourself, using JaneStreet's `[Core](https://github.com/janestreet/core)` library. You can install it using OPAM.
+
+```
+$ opam install core
+```
+
+### Compiling `todo_list`
+
+Then, compile `todo_list`:
+
+```
+$ corebuild Main.native
+```
+
+Feel free to add `Main.native` to your `$PATH` environment variable for an easier usage.
+
 Need help?
 ----------
 
